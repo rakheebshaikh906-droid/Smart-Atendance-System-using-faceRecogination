@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Parent Registration (Teacher Panel)</title>
+
+    <style>
+        body {
+            background: #eef4ff;
+            font-family: Arial;
+            margin: 0;
+        }
+
+        h1 {
+            background: #0a74ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: 0;
+        }
+
+        .nav {
+            text-align: center;
+            padding: 10px;
+            background: #f0f5ff;
+        }
+
+        .nav button {
+            padding: 8px 15px;
+            background: #d9e8ff;
+            border: none;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            margin: 30px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 8px;
+            border: 1px solid #b5c8f5;
+        }
+
+        button.register-btn {
+            width: 100%;
+            padding: 12px;
+            background: #0a74ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+    </style>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKk0ZMDOzjlK0y5B9vKRI4H99z8kR2m9I",
+            authDomain: "smart-attendance-system-29984.firebaseapp.com",
+            databaseURL: "https://smart-attendance-system-29984-default-rtdb.firebaseio.com",
+            projectId: "smart-attendance-system-29984",
+            storageBucket: "smart-attendance-system-29984.firebasestorage.app",
+            messagingSenderId: "576562417490",
+            appId: "1:576562417490:web:4a560edf0254d195e6348b",
+            measurementId: "G-HK9N3D50X4"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script defer src="parent-register.js"></script>
+
+</head>
+
+<body>
+
+    <h1>Parent Registration (Teacher Panel)</h1>
+
+    <div class="nav">
+        <button onclick="window.location='index.html'">Home</button>
+        <button onclick="window.location='attendance.html'">Attendance</button>
+        <button onclick="window.location='dashboard.html'">Dashboard</button>
+        <button onclick="window.location='parent-login.html'">Parent Login Page</button>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Register Parent</h2>
+
+            <!-- SELECT STUDENT -->
+            <label for="studentSelect">Select Student</label>
+            <select id="studentSelect">
+                <option value="">-- Select Student --</option>
+            </select>
+
+            <!-- PARENT INFO -->
+            <label for="parentName">Parent Name</label>
+            <input type="text" id="parentName" placeholder="Parent Name">
+
+            <label for="parentEmail">Parent Email</label>
+            <input type="email" id="parentEmail" placeholder="Parent Email">
+
+            <label for="parentPhone">Parent Phone</label>
+            <input type="text" id="parentPhone" placeholder="Parent Phone Number">
+
+            <label for="parentPassword">Parent Login Password</label>
+            <input type="password" id="parentPassword" placeholder="Parent Password">
+
+            <button class="register-btn" onclick="registerParent()">Register Parent</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
