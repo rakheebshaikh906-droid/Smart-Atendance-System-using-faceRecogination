@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register Student</title>
+
+    <style>
+        body {
+            background: #eef4ff;
+            font-family: Arial;
+            margin: 0;
+        }
+
+        h1 {
+            background: #0a74ff;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        }
+
+        input,
+        select {
+            width: 95%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 18px;
+            margin: 5px;
+            background: #0a74ff;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #previewImg {
+            width: 220px;
+            margin-top: 10px;
+            border-radius: 10px;
+            display: none;
+        }
+    </style>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKk0ZMDOzjlK0y5B9vKRI4H99z8kR2m9I",
+            authDomain: "smart-attendance-system-29984.firebaseapp.com",
+            databaseURL: "https://smart-attendance-system-29984-default-rtdb.firebaseio.com",
+            projectId: "smart-attendance-system-29984",
+            storageBucket: "smart-attendance-system-29984.firebasestorage.app",
+            messagingSenderId: "576562417490",
+            appId: "1:576562417490:web:4a560edf0254d195e6348b",
+            measurementId: "G-HK9N3D50X4"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script defer src="register.js"></script>
+
+</head>
+
+<body>
+
+    <h1>Register Student</h1>
+
+    <div class="container">
+
+        <label>Student Name</label>
+        <input id="studentName" type="text" placeholder="Enter full name">
+
+        <label>Roll Number</label>
+        <input id="studentRoll" type="text" placeholder="Enter roll number">
+
+        <label>Year</label>
+        <select id="studentYear">
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+        </select>
+
+        <label>Branch</label>
+        <select id="studentBranch">
+            <option value="ELECTRONIC & computer">ELECTRONIC & computer (ECE)</option>
+            <option value="CSC">CSC</option>
+            <option value="CSC (DS)">CSC (DS)</option>
+            <option value="MECHANICAL">MECHANICAL</option>
+            <option value="ELECTRICAL">ELECTRICAL</option>
+            <option value="CIVIL">CIVIL</option>
+        </select>
+
+        <h3>Upload Student Photo</h3>
+        <input type="file" id="photoInput" accept="image/*">
+
+        <img id="previewImg">
+
+        <button onclick="registerStudent()">Register Student</button>
+
+    </div>
+
+</body>
+
+</html>
