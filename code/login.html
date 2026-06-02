@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <style>
+        body {
+            background: #eef4ff;
+            font-family: Arial;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
+            margin-top: 60px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0a74ff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .tab-buttons button {
+            width: 48%;
+            background: #d9e8ff;
+            color: black;
+        }
+
+        .tab-buttons .active {
+            background: #0a74ff;
+            color: white;
+        }
+    </style>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKk0ZMDOzjlK0y5B9vKRI4H99z8kR2m9I",
+            authDomain: "smart-attendance-system-29984.firebaseapp.com",
+            databaseURL: "https://smart-attendance-system-29984-default-rtdb.firebaseio.com",
+            projectId: "smart-attendance-system-29984",
+            storageBucket: "smart-attendance-system-29984.firebasestorage.app",
+            messagingSenderId: "576562417490",
+            appId: "1:576562417490:web:4a560edf0254d195e6348b",
+            measurementId: "G-HK9N3D50X4"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script defer src="login.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="tab-buttons">
+            <button id="teacherBtn" class="active" onclick="showTeacher()">Teacher Login</button>
+            <button id="parentBtn" onclick="showParent()">Parent Login</button>
+        </div>
+
+        <!-- Teacher Login -->
+        <div id="teacherForm">
+            <h2>Teacher Login</h2>
+            <input type="email" id="tEmail" placeholder="Teacher Email">
+            <input type="password" id="tPass" placeholder="Password">
+            <button onclick="teacherLogin()">Login as Teacher</button>
+        </div>
+
+        <!-- Parent Login -->
+        <div id="parentForm" style="display:none;">
+            <h2>Parent Login</h2>
+            <input type="email" id="pEmail" placeholder="Parent Email">
+            <input type="password" id="pPass" placeholder="Password">
+            <button onclick="parentLogin()">Login as Parent</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
