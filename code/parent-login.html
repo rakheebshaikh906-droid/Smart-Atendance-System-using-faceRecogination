@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Parent Login</title>
+
+    <style>
+        body {
+            background: #eef4ff;
+            font-family: Arial;
+            margin: 0;
+        }
+
+        .box {
+            width: 350px;
+            margin: 80px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #b5c8f5;
+        }
+
+        button {
+            width: 95%;
+            padding: 12px;
+            background: #0a74ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKk0ZMDOzjlK0y5B9vKRI4H99z8kR2m9I",
+            authDomain: "smart-attendance-system-29984.firebaseapp.com",
+            databaseURL: "https://smart-attendance-system-29984-default-rtdb.firebaseio.com",
+            projectId: "smart-attendance-system-29984",
+            storageBucket: "smart-attendance-system-29984.firebasestorage.app",
+            messagingSenderId: "576562417490",
+            appId: "1:576562417490:web:4a560edf0254d195e6348b",
+            measurementId: "G-HK9N3D50X4"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script>
+        function parentLogin() {
+            let email = document.getElementById("email").value;
+            let pass = document.getElementById("pass").value;
+
+            firebase.auth().signInWithEmailAndPassword(email, pass)
+                .then(userCred => {
+
+                    let uid = userCred.user.uid;
+
+                    firebase.database().ref("parents/" + uid).once("value").then(snap => {
+                        if (!snap.exists()) {
+                            alert("Not a parent account!");
+                            return;
+                        }
+                        let studentName = snap.val().student;
+
+                        // Save student name temporarily
+                        localStorage.setItem("parentStudent", studentName);
+
+                        window.location = "parent-dashboard.html";
+                    });
+                })
+                .catch(err => alert(err.message));
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>Parent Login</h2>
+
+        <input type="email" id="email" placeholder="Parent Email">
+        <input type="password" id="pass" placeholder="Password">
+
+        <button onclick="parentLogin()">Login</button>
+    </div>
+
+</body>
+
+</html>
