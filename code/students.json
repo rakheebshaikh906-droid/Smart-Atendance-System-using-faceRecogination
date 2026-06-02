@@ -1,0 +1,22 @@
+[
+  {
+    "name": "atharva",
+    "roll": "01",
+    "images": ["1.png"]
+  },
+  {
+    "name": "karan",
+    "roll": "02",
+    "images": ["1.png"]
+  },
+  {
+    "name": "mama",
+    "roll": "03",
+    "images": ["1.png"]
+  },
+  {
+    "name": "sarhan",
+    "roll": "04",
+    "images": ["1.png"]
+  }
+]
