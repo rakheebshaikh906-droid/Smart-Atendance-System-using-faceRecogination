@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Attendance Records</title>
+
+    <style>
+        body {
+            background: #eef4ff;
+            font-family: Arial;
+            margin: 0;
+        }
+
+        h1 {
+            background: #0a74ff;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+
+        .nav {
+            text-align: center;
+            padding: 10px;
+            background: #f0f5ff;
+        }
+
+        .nav button {
+            padding: 8px 15px;
+            background: #d9e8ff;
+            border: none;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #cbd7f0;
+            padding: 10px;
+            background: #e9f1ff;
+            text-align: center;
+        }
+
+        #dateSelect {
+            padding: 10px;
+            width: 50%;
+            border-radius: 8px;
+            border: 1px solid #b5c8f5;
+        }
+    </style>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKk0ZMDOzjlK0y5B9vKRI4H99z8kR2m9I",
+            authDomain: "smart-attendance-system-29984.firebaseapp.com",
+            databaseURL: "https://smart-attendance-system-29984-default-rtdb.firebaseio.com",
+            projectId: "smart-attendance-system-29984",
+            storageBucket: "smart-attendance-system-29984.firebasestorage.app",
+            messagingSenderId: "576562417490",
+            appId: "1:576562417490:web:4a560edf0254d195e6348b",
+            measurementId: "G-HK9N3D50X4"
+        };
+        firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <script defer src="attendance.js"></script>
+
+</head>
+
+<body>
+
+    <h1>Attendance Records</h1>
+
+    <div class="nav">
+        <button onclick="window.location='index.html'">Home</button>
+        <button onclick="window.location='dashboard.html'">Dashboard</button>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Select Date</h2>
+
+            <!-- DATE DROPDOWN -->
+            <select id="dateSelect" onchange="loadAttendanceByDate()">
+                <option value="">-- Select a Date --</option>
+            </select>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+</html>
